@@ -1,13 +1,101 @@
 import type { Config } from 'tailwindcss';
+
 const config: Config = {
-  content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
+  darkMode: ['class'],
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
   theme: {
     extend: {
-      fontFamily: { syne: ['var(--font-syne)', 'sans-serif'], 'dm-sans': ['var(--font-dm-sans)', 'system-ui', 'sans-serif'] },
-      colors: {
-        vayrix: { bg: '#0A0E1A', surface: '#111827', card: '#1A2235', blue: '#3B7BE8', cyan: '#00D4FF', text: '#F0F4FF', muted: '#8896B0', success: '#22C55E', warning: '#F59E0B', error: '#EF4444', border: '#1E2D45' }
+      fontFamily: {
+        syne: ['var(--font-syne)', 'sans-serif'],
+        'dm-sans': ['var(--font-dm-sans)', 'system-ui', 'sans-serif'],
       },
-      borderRadius: { phone: '44px' },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
+        phone: '44px',
+      },
+      colors: {
+        vayrix: {
+          bg: '#0A0E1A',
+          surface: '#111827',
+          card: '#1A2235',
+          blue: '#3B7BE8',
+          cyan: '#00D4FF',
+          text: '#F0F4FF',
+          muted: '#8896B0',
+          success: '#22C55E',
+          warning: '#F59E0B',
+          error: '#EF4444',
+          border: '#1E2D45',
+        },
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
+        },
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        chart: {
+          '1': 'hsl(var(--chart-1))',
+          '2': 'hsl(var(--chart-2))',
+          '3': 'hsl(var(--chart-3))',
+          '4': 'hsl(var(--chart-4))',
+          '5': 'hsl(var(--chart-5))',
+        },
+      },
+      keyframes: {
+        'accordion-down': {
+          from: {
+            height: '0',
+          },
+          to: {
+            height: 'var(--radix-accordion-content-height)',
+          },
+        },
+        'accordion-up': {
+          from: {
+            height: 'var(--radix-accordion-content-height)',
+          },
+          to: {
+            height: '0',
+          },
+        },
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],
